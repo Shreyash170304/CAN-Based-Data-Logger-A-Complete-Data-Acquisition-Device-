@@ -1,0 +1,96 @@
+VERSION "CjPower CAN Protocol V3.0"
+
+NS_ :
+    NS_DESC_
+    CM_
+    BA_DEF_
+    BA_
+    VAL_
+    CAT_DEF_
+    CAT_
+    FILTER
+    BA_DEF_DEF_
+    EV_DATA_
+    ENVVAR_DATA_
+    SGTYPE_
+    SGTYPE_VAL_
+    BA_DEF_SGTYPE_
+    BA_SGTYPE_
+    SIG_TYPE_REF_
+    VAL_TABLE_
+    SIG_GROUP_
+    SIG_VALTYPE_
+    SIGTYPE_VALTYPE_
+    BO_TX_BU_
+    BA_DEF_REL_
+    BA_REL_
+    BA_DEF_DEF_REL_
+    BU_SG_REL_
+    BU_EV_REL_
+    BU_BO_REL_
+    SG_MUL_VAL_
+
+BS_ :
+
+BU_: MCU VCU DBD BMS
+
+BO_ 1041 MCU_Status: 8 MCU
+ SG_ Motor_speed : 7|16@0+ (1,0) [0|65535] "rpm" MCU
+ SG_ Gear_status : 23|8@0+ (1,0) [0|255] "" MCU
+ SG_ Status_feedback1 : 31|8@0+ (1,0) [0|255] "" MCU
+ SG_ Status_feedback2 : 39|8@0+ (1,0) [0|255] "" MCU
+ SG_ Status_feedback3 : 47|8@0+ (1,0) [0|255] "" MCU
+ SG_ Power_mode : 55|8@0+ (1,0) [0|255] "" MCU
+ SG_ Handle_opening : 63|8@0+ (1,0) [0|100] "%" MCU
+
+BO_ 1042 MCU_Temperatures: 8 MCU
+ SG_ Controller_temp : 7|8@0+ (1,-40) [-40|200] "C" MCU
+ SG_ Motor_temp : 15|8@0+ (1,-40) [-40|200] "C" MCU
+ SG_ Bus_current : 23|16@0+ (0.1,-1000) [-1000|1000] "A" MCU
+ SG_ Bus_voltage : 39|16@0+ (1,0) [0|500] "V" MCU
+ SG_ Phase_current_RMS : 55|16@0+ (1,0) [0|5000] "A" MCU
+
+BO_ 561 MCU_SpeedMileage: 8 MCU
+ SG_ Speed : 7|8@0+ (1,0) [0|200] "km/h" MCU
+ SG_ Wheel_circumference : 15|8@0+ (1,0) [0|255] "cm" MCU
+ SG_ Subtotal_mileage : 23|16@0+ (0.1,0) [0|6553] "km" MCU
+ SG_ Miles_remaining : 39|16@0+ (0.1,0) [0|6553] "km" MCU
+ SG_ Obligate : 55|16@0+ (1,0) [0|65535] "" MCU
+
+BO_ 562 MCU_TotalMileage: 8 MCU
+ SG_ Total_mileage : 7|32@0+ (1,0) [0|4294967295] "km" MCU
+
+BO_ 1088 MCU_Version: 8 MCU
+ SG_ Vendor_code : 7|32@0+ (1,0) [0|4294967295] "" MCU
+ SG_ HW_version : 39|16@0+ (1,0) [0|65535] "" MCU
+ SG_ SW_version : 55|16@0+ (1,0) [0|65535] "" MCU
+
+BO_ 1045 VCU_Commands: 8 VCU
+ SG_ Turnbar_percentage : 7|8@0+ (1,-100) [-100|100] "%" MCU
+ SG_ Gear_commands : 15|8@0+ (1,0) [0|255] "" MCU
+ SG_ Function_switch : 23|8@0+ (1,0) [0|255] "" MCU
+
+BO_ 1043 MCU_current: 8 Vector__XXX
+ SG_ Id_current : 7|16@0+ (1,0) [-1000|1000] "A" Vector__XXX
+ SG_ Iq_current : 23|16@0+ (1,0) [0|1000] "A" Vector__XXX
+
+BO_ 1074 Torquesensor: 6 Vector__XXX
+ SG_ Torque : 7|16@0+ (0.1,0) [0|8031.875] "Nm" Vector__XXX
+ SG_ Speed : 23|16@0+ (1,0) [0|0] "RPM" Vector__XXX
+
+
+
+
+
+
+
+
+
+
+CM_ BO_ 1074 "Torque sensor";
+CM_ SG_ 1074 Torque "Motor Torque";
+CM_ SG_ 1074 Speed "Motor Speed";
+
+BA_DEF_ BO_  "VFrameFormat" ENUM  "StandardCAN","ExtendedCAN","reserved","J1939PG";
+BA_DEF_DEF_  "VFrameFormat" "StandardCAN";
+BA_ "VFrameFormat" BO_ 1074 1;

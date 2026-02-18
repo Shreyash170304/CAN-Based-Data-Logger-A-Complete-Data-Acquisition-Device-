@@ -1,0 +1,94 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_:
+VAL_TABLE_ tenam_curr_volt_select 1 "Tenam_Current_Control" 0 "Tenma_Voltage_Control" ;
+VAL_TABLE_ endurance_state 4 "endurance_off" 3 "endurance_shutdown" 2 "endurance_trial" 1 "trial_init" ;
+VAL_TABLE_ Endurance_control 16 "Endurance_disable" 5 "Endurance enable" ;
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ controller_over_heat : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 1780 Throttle_signal: 1 Vector__XXX
+ SG_ throttle_volatge : 0|8@1+ (0.1,0) [0|25.5] "V" Vector__XXX
+
+BO_ 1524 ECU_Phase_current: 6 Vector__XXX
+ SG_ B_phase_current : 32|16@1- (0.1,0) [-3276.8|3276.7] "A" Vector__XXX
+ SG_ G_phase_current : 16|16@1- (0.1,0) [-3276.8|3276.7] "A" Vector__XXX
+ SG_ y_phase_current : 0|16@1- (0.1,0) [-3276.8|3276.7] "Amp" Vector__XXX
+
+BO_ 1268 ECU_axis_Current: 6 Vector__XXX
+ SG_ d_axis_current : 16|16@1- (0.1,0) [-3276.8|3276.7] "A" Vector__XXX
+ SG_ Q_axix_current : 0|16@1- (0.1,0) [-3276.8|3276.7] "Amp" Vector__XXX
+
+BO_ 1012 ECU_Fault: 2 Vector__XXX
+ SG_ motor_over_heat_error : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ external_osc_error : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ self_learning_error : 13|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ NVM_parameter_error : 12|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ throttle_error : 11|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ hard_error : 9|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ controler_over_heat : 10|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ brake_error_fault : 8|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Over_speed_fault : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ lost_phase_fault : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ mosfet_error_fault : 5|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ hall_eror_fault : 4|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ motor_stall_fault : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ over_current_fault : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ under_voltage_fault : 1|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ over_voltage_fault : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 756 ECU_Motor_Power_Msg: 8 Vector__XXX
+ SG_ Battery_voltage : 40|16@1+ (0.1,0) [0|6553.5] "V" Vector__XXX
+ SG_ Battery_current : 24|16@1- (0.1,0) [-3276.8|3276.7] "" Vector__XXX
+ SG_ Motor_current : 8|16@1- (0.1,0) [-3276.8|3276.7] "" Vector__XXX
+ SG_ Motor_state : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 500 ECU_Temp_RPM_Msg: 8 Vector__XXX
+ SG_ Torque : 48|16@1+ (1,0) [0|65535] "Nm" Vector__XXX
+ SG_ Motor_Temperature : 24|8@1+ (1,-25) [-25|230] "degree" Vector__XXX
+ SG_ MCU_Temperature : 8|8@1+ (1,-25) [-25|230] "Degree" Vector__XXX
+ SG_ Motor_RPM : 32|16@1+ (1,0) [0|65535] "RPM" Vector__XXX
+
+
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+BA_DEF_  "MultiplexExtEnabled" ENUM  "No","Yes";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "MultiplexExtEnabled" "No";
+BA_DEF_DEF_  "BusType" "CAN";
+
