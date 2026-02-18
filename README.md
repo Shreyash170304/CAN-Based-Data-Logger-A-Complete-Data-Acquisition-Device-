@@ -10,14 +10,18 @@ A CAN bus data logger for ESP32-C6 Pico that writes encrypted logs to SD and ser
 - Live data streaming and file management from browser
 - Optional ADXL345 IMU linear acceleration logging
 - Python decoders with DBC support and multiple export formats
+- OTA Server support for smooth wireless firmware update
+- GPS Tracking feature
+- Standalone data logger. No need of direct PC connection 
 
 ## Hardware
-- ESP32-C6 Pico (Waveshare)
+- ESP32-C6 Pico (SMartElex)
 - TJA1050 CAN transceiver
 - SD card module (SPI)
 - DS3231 RTC (I2C)
 - ADXL345 IMU (optional, I2C)
 - Neopixel LED (optional)
+- GPS Neo M8N
 
 ## Pin Map (current firmware)
 - CAN TX: GPIO17
@@ -29,6 +33,7 @@ A CAN bus data logger for ESP32-C6 Pico that writes encrypted logs to SD and ser
 - RTC/IMU SDA: GPIO22
 - RTC/IMU SCL: GPIO23
 - Neopixel: GPIO8
+- GPS - RX(4) TX(5) 
 
 ## Quick Start
 1. Upload `CAN_Data_Logger_Only/CAN_Data_Logger_Only.ino`
@@ -36,8 +41,10 @@ A CAN bus data logger for ESP32-C6 Pico that writes encrypted logs to SD and ser
 3. Open `http://192.168.10.1`
 4. Connect CAN bus and verify logging (LED turns MAGENTA on traffic)
 5. Download logs from `/CAN_Logged_Data/`
+6. These logs will be encrypted with the stream cipher encryption with 128 bit encryption key
+7. Then we have to DBC decode this file to get the proper output
 
-See `QUICK_START.md` for full steps.
+See `QUICK_START.md` for full steps. (Informative Markdown)
 
 ## Decoding
 - GUI (recommended): `Launch_New_Decoder.bat` or `python CAN_Data_Decoder_New.py`
